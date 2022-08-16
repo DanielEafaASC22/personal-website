@@ -1,19 +1,30 @@
-let original = document.getElementById("original");
-let dark = document.getElementById("dark");
-let white = document.getElementById("white");
-let random = document.getElementById("random");
+let original = document.querySelectorAll(".original")[0];
+let dark = document.querySelectorAll(".dark")[0];
+let white = document.querySelectorAll(".white")[0];
+let random = document.querySelectorAll(".random")[0];
+
 let navbar = document.querySelector(".navbar");
-let items = document.querySelector(".items");
 let body = document.querySelector("body");
 let p = document.querySelector("p");
 let title = document.querySelector(".title");
+
+
 
 original.onclick = function(){
     body.style.backgroundColor = "#ADD8ff";
     navbar.style.backgroundColor = "#bae6f5";
     body.style.color = "black";
-    items.style.color = "black";
-    p.style.border = "0";
+    for (i = 0; i < 3; i++){
+        document.querySelectorAll(".items")[i].style.color = "black";
+    }
+  
+    document.querySelectorAll(".navbar")[0].style.border = "0";
+    title.style.backgroundColor = "#ADD8ff";
+    title.style.color = "black";
+    navbutton.style.color = "black";
+    navbutton.style.backgroundColor = "blue";
+    
+    
 
 }
 
@@ -22,8 +33,16 @@ dark.onclick = function(){
     navbar.style.backgroundColor = "black";
     navbar.style.border = "solid 1px white";
     body.style.color = "white";
-    items.style.color = "white";
+    for (i = 0; i < 3; i++){
+        document.querySelectorAll(".items")[i].style.color = "white";
+    }
+    
     p.style.border = "none";
+    navbutton.style.color = "white";
+    navbutton.style.backgroundColor = "black";
+    navbutton.style.border = "solid 1px white";
+
+    
 
 
 
@@ -36,23 +55,49 @@ white.onclick = function(){
     body.style.color = "black";
     title.style.backgroundColor = "black";
     title.style.color = "white";
-    items.style.color = "black";
+    for (i = 0; i < 3; i++){
+        document.querySelectorAll(".items")[i].style.color = "black";
+    }
+    navbutton.style.color = "black";
+ 
+    navbutton.style.backgroundColor = "white";
+    navbutton.style.border = "solid 1px black";
+    
+    
 }
 random.onclick = function(){
-    let rand1 = Math.floor(Math.random() * 255);
-    let rand2 = Math.floor(Math.random() * 255);
-    let rand3 = Math.floor(Math.random() * 255);
-    let rand4 = Math.floor(Math.random() * 255);
-    let rand5 = Math.floor(Math.random() * 255);
-    let rand6 = Math.floor(Math.random() * 255);
+    body.style.backgroundColor = randomRGB();
+    body.style.color = randomRGB();
+    navbar.style.backgroundColor = randomRGB();
+    navbutton.style.color = randomRGB();
+    for (i = 0; i < 3; i++){
+        document.querySelectorAll(".items")[i].style.color = randomRGB();
+    }
+    title.style.backgroundColor = randomRGB();
 
-
-    let color1 = rgb(rand1, rand2, rand3);
-    let color2 = rgb(rand4, rand5, rand6);
-    body.style.backgroundColor = "color1";
-    navbar.style.backgroundColor = "color2";
-
+    navbutton.style.color = randomRGB();
+    navbutton.style.backgroundColor = randomRGB();
+    navbutton.style.border = "solid 1px black";
 }
+
+
+
+
+function randInt(n){
+    return Math.floor(Math.random() * n);
+}
+
+function randomRGB(){
+    let r = randInt(256);
+    let g = randInt(256);
+    let b = randInt(256);
+
+    return`rgb(${r}, ${g}, ${b} )`;
+}
+
+
+
+
 
 let navbutton = document.querySelector(".navbutton");
 
